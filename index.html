@@ -1,309 +1,372 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon.in - Online Shopping</title>
+    <title>Amazon Clone</title>
+
     <link rel="stylesheet" href="amazon.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
 
-<!-- TOP NAVBAR -->
-<nav class="navbar">
-  <div class="logo-text">amazon<span>.in</span></div>
+    <!-- LOADER -->
 
-  <div class="nav-deliver">
-    <span class="line1">📍 Deliver to</span>
-    <span class="line2">New Delhi 110001</span>
-  </div>
-
-  <div class="nav-search">
-    <select class="search-cat">
-      <option>All</option>
-      <option>Electronics</option>
-      <option>Clothing</option>
-      <option>Books</option>
-      <option>Home</option>
-      <option>Mobiles</option>
-      <option>Sports</option>
-      <option>Beauty</option>
-    </select>
-    <input type="text" id="searchInput" placeholder="Search Amazon.in" />
-    <button class="search-btn" onclick="handleSearch()">🔍</button>
-  </div>
-
-  <div class="nav-links">
-    <div class="nav-link">
-      <span class="line1">Hello, Sign in</span>
-      <span class="line2">Account &amp; Lists ▾</span>
+    <div id="loader">
+        <div class="spinner"></div>
     </div>
-    <div class="nav-link">
-      <span class="line1">Returns</span>
-      <span class="line2">&amp; Orders</span>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            amazon<span>.in</span>
+        </div>
+
+        <div class="location">
+            <small>Deliver to</small>
+            <strong>India</strong>
+        </div>
+
+        <div class="search-bar">
+
+            <select>
+                <option>All</option>
+                <option>Electronics</option>
+                <option>Fashion</option>
+                <option>Books</option>
+            </select>
+
+            <input type="text" id="searchInput" placeholder="Search Amazon">
+
+            <button onclick="searchProducts()">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+        </div>
+
+        <div class="nav-links">
+
+            <div>
+                <small>Hello, Sign in</small>
+                <strong>Accounts</strong>
+            </div>
+
+            <div>
+                <small>Returns</small>
+                <strong>& Orders</strong>
+            </div>
+
+        </div>
+
+        <div class="cart" id="cartBtn">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span id="cartCount">0</span>
+
+        </div>
+
+    </nav>
+
+    <!-- MENU -->
+
+    <div class="menu">
+
+        <div>☰ All</div>
+        <div>Today's Deals</div>
+        <div>Electronics</div>
+        <div>Fashion</div>
+        <div>Books</div>
+        <div>Mobiles</div>
+        <div>Prime</div>
+
     </div>
-  </div>
 
-  <div class="nav-cart" onclick="showToast('🛒 Cart is empty. Add some items!')">
-    <span style="font-size:26px">🛒</span>
-    <span class="cart-count" id="cartCount">0</span>
-    <span class="cart-label">Cart</span>
-  </div>
-</nav>
+    <!-- HERO -->
 
-<!-- SUB-NAV -->
-<div class="subnav">
-  <div class="subnav-link bold">☰ All</div>
-  <div class="subnav-link">Today's Deals</div>
-  <div class="subnav-link">Mobiles</div>
-  <div class="subnav-link">Electronics</div>
-  <div class="subnav-link">Fashion</div>
-  <div class="subnav-link">Amazon Pay</div>
-  <div class="subnav-link">Home &amp; Kitchen</div>
-  <div class="subnav-link">Books</div>
-  <div class="subnav-link">Sports</div>
-  <div class="subnav-link">Beauty</div>
-  <div class="subnav-link">Grocery</div>
-  <div class="subnav-link">Baby</div>
-  <div class="subnav-link">Toys</div>
-  <div class="subnav-link">Car &amp; Motorbike</div>
-  <div class="subnav-link">Customer Service</div>
+    <section class="hero">
+
+        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1400&q=80">
+
+        <div class="hero-overlay">
+
+            <h1>MEGA SALE</h1>
+
+            <p>Up to 70% Off</p>
+
+        </div>
+
+    </section>
+    
+<!-- CATEGORY SECTON -->
+
+<section class="categories">
+
+    <div class="cat-box">
+        <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?w=500">
+        <h3>Mobiles</h3>
+    </div>
+
+    <div class="cat-box">
+        <img src="https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?w=500">
+        <h3>Laptops</h3>
+    </div>
+
+    <div class="cat-box">
+        <img src="https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?w=500">
+        <h3>Fashion</h3>
+    </div>
+
+    <div class="cat-box">
+        <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?w=500">
+        <h3>Gaming</h3>
+    </div>
+
+</section>
+
+<!-- BIG SALE BANNER -->
+
+<section class="big-sale">
+
+    <div class="sale-text">
+
+        <h1>Today's Biggest Deals</h1>
+
+        <p>Up to 80% OFF</p>
+
+        <button>Shop Now</button>
+
+    </div>
+
+</section>
+
+<!-- EXTRA PRODUCTS -->
+
+<section class="products">
+
+    <div class="card">
+
+        <img src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?w=500">
+
+        <h3>Headphones</h3>
+
+        <div class="rating">★★★★★</div>
+
+        <p class="price">₹1999</p>
+
+        <button onclick="addToCart('Headphones',1999)">
+            Add to Cart
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <img src="https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?w=500">
+
+        <h3>Camera</h3>
+
+        <div class="rating">★★★★☆</div>
+
+        <p class="price">₹45999</p>
+
+        <button onclick="addToCart('Camera',45999)">
+            Add to Cart
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <img src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?w=500">
+
+        <h3>Sofa</h3>
+
+        <div class="rating">★★★★☆</div>
+
+        <p class="price">₹14999</p>
+
+        <button onclick="addToCart('Sofa',14999)">
+            Add to Cart
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <img src="https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?w=500">
+
+        <h3>Perfume</h3>
+
+        <div class="rating">★★★★★</div>
+
+        <p class="price">₹899</p>
+
+        <button onclick="addToCart('Perfume',899)">
+            Add to Cart
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ACCOUNT DROPDOWN -->
+
+<div class="account-dropdown">
+
+    <h3>Your Account</h3>
+
+    <p>Your Orders</p>
+    <p>Your Wishlist</p>
+    <p>Prime Membership</p>
+    <p>Settings</p>
+    <p>Logout</p>
+
 </div>
-<!-- MENU BAR -->
-<div class="menu">
-    <div class="menu-inner">
-        <a href="#" class="menu-item all-btn">☰ All</a>
-        <a href="#" class="menu-item">Fresh</a>
-        <a href="deals.html" class="menu-item">Today's Deals</a>
-        <a href="#" class="menu-item">Best Sellers</a>
-        <a href="#" class="menu-item">Mobiles</a>
-        <a href="#" class="menu-item">Electronics</a>
-        <a href="#" class="menu-item">Fashion</a>
-        <a href="#" class="menu-item">Home &amp; Kitchen</a>
-        <a href="#" class="menu-item">Books</a>
-        <a href="#" class="menu-item">Sell</a>
-        <a href="#" class="menu-item prime-item">Try Prime</a>
-    </div>
-</div>
+```
 
-<!-- HERO BANNER -->
-<div class="hero">
-    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1400&q=80" alt="Sale Banner">
-    <div class="hero-overlay"></div>
-</div>
 
-<!-- DEALS GRID -->
-<div class="deals-grid">
-    <div class="deal-card promo-card">
-        <h3>Up to 60% off</h3>
-        <p>Electronics Sale</p>
-        <a href="#">See all deals</a>
-        <img src="https://images.pexels.com/photos/11376175/pexels-photo-11376175.jpeg?w=300&q=70" alt="">
-    </div>
-    <div class="deal-card promo-card">
-        <h3>Starts ₹99</h3>
-        <p>Fashion Picks</p>
-        <a href="#">Shop now</a>
-        <img src="https://images.pexels.com/photos/5424914/pexels-photo-5424914.jpeg?w=300&q=70" alt="">
-    </div>
-    <div class="deal-card promo-card">
-        <h3>New Arrivals</h3>
-        <p>Home &amp; Kitchen</p>
-        <a href="#">Explore</a>
-        <img src="https://images.pexels.com/photos/30923809/pexels-photo-30923809.jpeg?w=300&q=70" alt="">
-    </div>
-    <div class="deal-card promo-card">
-        <h3>Best Sellers</h3>
-        <p>Books &amp; More</p>
-        <a href="#">Browse</a>
-        <img src="https://images.pexels.com/photos/19900720/pexels-photo-19900720.jpeg?w=300&q=70" alt="">
-    </div>
-</div>
+    <!-- PRODUCTS -->
 
-<!-- SPECIAL OFFERS -->
-<div class="section-wrap">
-    <div class="section-header">
-        <h2 class="section-title">Special Offers</h2>
-        <a href="deals.html" class="see-more">See all deals ›</a>
-    </div>
-    <div class="cards">
-        <div class="box">
-            <span class="badge deal">Limited deal</span>
-            <img src="https://images.pexels.com/photos/186037/pexels-photo-186037.jpeg?w=300&q=70" alt="Shoes">
-            <div class="box-info">
-                <h3>Deals on Shoes</h3>
-                <div class="rating">★★★★☆ <span>(1,234)</span></div>
-                <div class="price-wrap">
-                    <span class="price">₹1,500</span>
-                    <span class="orig-price">₹2,999</span>
-                    <span class="discount">50% off</span>
-                </div>
-                <p class="delivery">FREE delivery <strong>Tomorrow</strong></p>
-                <button class="add-btn" onclick="addToCart('Shoes', 1500)">Add to Cart</button>
+    <section class="products">
+
+        <div class="card">
+
+            <img src="https://images.pexels.com/photos/186037/pexels-photo-186037.jpeg?w=500">
+
+            <h3>Shoes</h3>
+
+            <div class="rating">
+                ★★★★☆
             </div>
+
+            <p class="price">₹1499</p>
+
+            <button onclick="addToCart('Shoes',1499)">
+                Add to Cart
+            </button>
+
         </div>
 
-        <div class="box">
-            <span class="badge new">New</span>
-            <img src="https://images.pexels.com/photos/30923809/pexels-photo-30923809.jpeg?w=300&q=70" alt="Home Decor">
-            <div class="box-info">
-                <h3>Home Decor</h3>
-                <div class="rating">★★★★★ <span>(867)</span></div>
-                <div class="price-wrap">
-                    <span class="price">₹2,000</span>
-                    <span class="orig-price">₹3,500</span>
-                    <span class="discount">43% off</span>
-                </div>
-                <p class="delivery">FREE delivery <strong>in 2 days</strong></p>
-                <button class="add-btn" onclick="addToCart('Home Decor', 2000)">Add to Cart</button>
+        <div class="card">
+
+            <img src="https://images.pexels.com/photos/5424914/pexels-photo-5424914.jpeg?w=500">
+
+            <h3>Fashion</h3>
+
+            <div class="rating">
+                ★★★★★
             </div>
+
+            <p class="price">₹999</p>
+
+            <button onclick="addToCart('Fashion',999)">
+                Add to Cart
+            </button>
+
         </div>
 
-        <div class="box">
-            <img src="https://images.pexels.com/photos/35378675/pexels-photo-35378675.jpeg?w=300&q=70" alt="Furniture">
-            <div class="box-info">
-                <h3>Furniture</h3>
-                <div class="rating">★★★★☆ <span>(432)</span></div>
-                <div class="price-wrap">
-                    <span class="price">₹2,500</span>
-                    <span class="orig-price">₹4,000</span>
-                    <span class="discount">38% off</span>
-                </div>
-                <p class="delivery">FREE delivery <strong>Thursday</strong></p>
-                <button class="add-btn" onclick="addToCart('Furniture', 2500)">Add to Cart</button>
+        <div class="card">
+
+            <img src="https://images.pexels.com/photos/15592023/pexels-photo-15592023.jpeg?w=500">
+
+            <h3>Gaming</h3>
+
+            <div class="rating">
+                ★★★★★
             </div>
+
+            <p class="price">₹2999</p>
+
+            <button onclick="addToCart('Gaming',2999)">
+                Add to Cart
+            </button>
+
         </div>
 
-        <div class="box">
-            <span class="badge hot">Best Seller</span>
-            <img src="https://images.pexels.com/photos/11376175/pexels-photo-11376175.jpeg?w=300&q=70" alt="Electronics">
-            <div class="box-info">
-                <h3>Electronics</h3>
-                <div class="rating">★★★★☆ <span>(5,671)</span></div>
-                <div class="price-wrap">
-                    <span class="price">₹2,500</span>
-                    <span class="orig">– ₹25,000</span>
-                </div>
-                <p class="delivery">FREE delivery <strong>Tomorrow</strong></p>
-                <button class="add-btn" onclick="addToCart('Electronics', 15000)">Add to Cart</button>
+        <div class="card">
+
+            <img src="https://images.pexels.com/photos/32942764/pexels-photo-32942764.jpeg?w=500">
+
+            <h3>Watch</h3>
+
+            <div class="rating">
+                ★★★★☆
             </div>
+
+            <p class="price">₹599</p>
+
+            <button onclick="addToCart('Watch',599)">
+                Add to Cart
+            </button>
+
         </div>
+
+    </section>
+
+    <!-- CART SIDEBAR -->
+
+    <div class="cart-sidebar" id="sidebar">
+
+        <h2>Your Cart</h2>
+
+        <div id="cartItems"></div>
+
     </div>
-</div>
 
-<!-- MORE DEALS -->
-<div class="section-wrap">
-    <div class="section-header">
-        <h2 class="section-title">More Deals</h2>
-        <a href="deals.html" class="see-more">See all ›</a>
-    </div>
-    <div class="cards">
-        <div class="box">
-            <span class="badge deal">Starting ₹250</span>
-            <img src="https://images.pexels.com/photos/32942764/pexels-photo-32942764.jpeg?w=300&q=70" alt="Watches">
-            <div class="box-info">
-                <h3>Watches</h3>
-                <div class="rating">★★★★☆ <span>(2,109)</span></div>
-                <div class="price-wrap">
-                    <span class="price">₹250</span>
-                    <span class="orig-price">₹799</span>
-                    <span class="discount">69% off</span>
-                </div>
-                <p class="delivery">FREE delivery <strong>Tomorrow</strong></p>
-                <button class="add-btn" onclick="addToCart('Watch', 500)">Add to Cart</button>
+    <!-- TOAST -->
+
+    <div class="toast" id="toast"></div>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-top">
+            Back to top
+        </div>
+
+        <div class="footer-content">
+
+            <div>
+                <h4>Get to Know Us</h4>
+                <p>About</p>
+                <p>Careers</p>
+                <p>Press</p>
             </div>
-        </div>
 
-        <div class="box">
-            <span class="badge new">Trending</span>
-            <img src="https://images.pexels.com/photos/5424914/pexels-photo-5424914.jpeg?w=300&q=70" alt="Clothing">
-            <div class="box-info">
-                <h3>Clothing</h3>
-                <div class="rating">★★★★★ <span>(9,876)</span></div>
-                <div class="price-wrap">
-                    <span class="price">₹99</span>
-                    <span class="orig-price">₹499</span>
-                    <span class="discount">80% off</span>
-                </div>
-                <p class="delivery">FREE delivery <strong>Tomorrow</strong></p>
-                <button class="add-btn" onclick="addToCart('Clothing', 500)">Add to Cart</button>
+            <div>
+                <h4>Connect</h4>
+                <p>Instagram</p>
+                <p>Facebook</p>
+                <p>Twitter</p>
             </div>
-        </div>
 
-        <div class="box">
-            <img src="https://images.pexels.com/photos/19900720/pexels-photo-19900720.jpeg?w=300&q=70" alt="Books">
-            <div class="box-info">
-                <h3>Books</h3>
-                <div class="rating">★★★★☆ <span>(3,421)</span></div>
-                <div class="price-wrap">
-                    <span class="price">₹50</span>
-                    <span class="orig-price">₹299</span>
-                    <span class="discount">83% off</span>
-                </div>
-                <p class="delivery">FREE delivery <strong>in 2 days</strong></p>
-                <button class="add-btn" onclick="addToCart('Books', 250)">Add to Cart</button>
+            <div>
+                <h4>Help</h4>
+                <p>Returns</p>
+                <p>Orders</p>
+                <p>Support</p>
             </div>
+
         </div>
 
-        <div class="box">
-            <span class="badge hot">Under ₹2000</span>
-            <img src="https://images.pexels.com/photos/15592023/pexels-photo-15592023.jpeg?w=300&q=70" alt="Gaming">
-            <div class="box-info">
-                <h3>Gaming</h3>
-                <div class="rating">★★★★★ <span>(7,654)</span></div>
-                <div class="price-wrap">
-                    <span class="price">₹1,500</span>
-                    <span class="orig-price">₹3,999</span>
-                    <span class="discount">63% off</span>
-                </div>
-                <p class="delivery">FREE delivery <strong>Tomorrow</strong></p>
-                <button class="add-btn" onclick="addToCart('Gaming', 1500)">Add to Cart</button>
-            </div>
+        <div class="copyright">
+            © 2026 Amazon Clone
         </div>
-    </div>
-</div>
 
-<!-- FOOTER -->
-<footer>
-    <div class="footer-top">
-        <a href="#">Back to top</a>
-    </div>
-    <div class="footer-mid">
-        <div class="footer-col">
-            <h4>Get to Know Us</h4>
-            <a href="#">About Amazon</a>
-            <a href="#">Careers</a>
-            <a href="#">Press Releases</a>
-            <a href="#">Amazon Cares</a>
-        </div>
-        <div class="footer-col">
-            <h4>Connect with Us</h4>
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-        </div>
-        <div class="footer-col">
-            <h4>Make Money with Us</h4>
-            <a href="#">Sell on Amazon</a>
-            <a href="#">Amazon Associates</a>
-            <a href="#">Advertise</a>
-        </div>
-        <div class="footer-col">
-            <h4>Let Us Help You</h4>
-            <a href="#">Your Account</a>
-            <a href="#">Returns Centre</a>
-            <a href="#">Help</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="footer-logo">
-        <p>© 2025 Amazon Clone. All rights reserved.</p>
-        <p>Conditions of Use &nbsp;|&nbsp; Privacy Notice &nbsp;|&nbsp; Interest-Based Ads</p>
-    </div>
-</footer>
+    </footer>
 
-<!-- TOAST NOTIFICATION -->
-<div class="toast" id="toast"></div>
+    <script src="amazon.js"></script>
 
-<script src="amazon.js"></script>
 </body>
+
 </html>
+```
